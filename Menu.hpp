@@ -3,7 +3,7 @@
 #include <unistd.h>
 //#include "/home/runner/TheAncientLord/include/Player.hpp"
 #include "Level.hpp"
-using namespace std;
+//using namespace std;
 
 Player *hero = new Hero("Rama", 150, 30); 
 
@@ -116,7 +116,7 @@ void ShowLevel5()
 
 void ShowLevel6()
   {
-    cout << "Starting Level 6: .......\nMitra: You have made it Rama, great going. Finally you will get to meet Ravana, they call him the demon wiht 10 heads \U0001f9db  \U0001f9db  \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \n---------------------------------\nMitra: Ravana has some special abilities like skull Smash (heavy damage) and Head Block (blocks attacks upto 80) !!\nIt will not be easy to beat him\nGood luck my friend!" << endl;
+    cout << "Starting Level 6: .......\nMitra: You have made it Rama, great going. Finally you will get to meet Ravana, they call him the demon wiht 10 heads \U0001f9db  \U0001f9db  \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \n---------------------------------\nMitra: Ravana has some special abilities like Skull Smash (heavy damage) and Head Block (blocks attacks upto 80) !!\nIt will not be easy to beat him\nGood luck my friend!" << endl;
     sleep(2);
     cout << "Ravana: Hahahahahahahahahahahaha \U0001f9db  \U0001f9db  \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db Glad that you made this far Rama, as now I get to kill you with my own hand.\n" << endl;    
     sleep(2);

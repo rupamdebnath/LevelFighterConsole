@@ -11,6 +11,8 @@ char RunMove(int level, int nEnemies, Menu display, bool IsHavingSword, bool IsH
   Player *enemy[nEnemies-1];
   if (level == 1)  
   enemy[nEnemies-1] = new Tataka("Tataka");
+  else if (level == 6)
+  enemy[nEnemies-1] = new Ravana();
   else
   {
     for(int i = 0; i < nEnemies; i++)
@@ -182,7 +184,8 @@ int main()
   bool IsHavingSword, IsHavingShield, IsHavingArmour, IsHavingBow;
   Menu display;
   PlayTurn play;  
-  //Player *enemy[5];  
+  //Intro 
+  display.Intro();
 
   //Starting Level 1
   level = 1;
