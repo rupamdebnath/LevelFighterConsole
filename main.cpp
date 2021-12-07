@@ -4,7 +4,6 @@
 #include "Menu.hpp"
 #include <iostream>
 
-
 char RunMove(int level, int nEnemies, Menu display, bool IsHavingSword, bool IsHavingShield, bool IsHavingArmour, bool IsHavingBow)
 {
   int enemyChoice;
@@ -38,6 +37,7 @@ char RunMove(int level, int nEnemies, Menu display, bool IsHavingSword, bool IsH
         play.HeroAttack(enemyChoice, enemy[i]);
         if (enemy[i]->getHealth() < 1)
         {
+          cout << enemy[i]->getName() << " is dead." << endl;
           nEnemies--; 
           if (nEnemies > 0)  
           goto NextEnemy;
@@ -65,21 +65,21 @@ char RunMove(int level, int nEnemies, Menu display, bool IsHavingSword, bool IsH
           play.HeroSwordAttack(enemyChoice, enemy[i]);
           if (enemy[i]->getHealth() < 1)
           {
+            cout << enemy[i]->getName() << " is dead." << endl;
             nEnemies--; 
             if (nEnemies > 0)  
             goto NextEnemy1;
             else
             goto LevelCleared;            
           }      
-        }      
-      break;
+        }  
       }
       else
       {
         cout << "You don't have the sword yet, Invalid move." << endl;
-        sleep(2);
-        break;
+        sleep(2);        
       }  
+      break;
 
       case 's':
       if (IsHavingShield)
@@ -102,15 +102,30 @@ char RunMove(int level, int nEnemies, Menu display, bool IsHavingSword, bool IsH
           //   else
           //   goto LevelCleared;            
           // }      
-        }     
-        break;
+        }         
       }
       else
       {
         cout << "You don't have the Shield yet, Invalid move." << endl;
+        sleep(2);        
+      } 
+      break;    
+
+      case 'z':
+      if (IsHavingArmour)
+      {
+        for(int i = 0; i < nEnemies; i++)
+        {
+          play.HeroUseArmour(enemy[i]);
+          enemyChoice = play.EnemyChoice(enemy[i], hero);
+        }
+      }
+      else 
+      {
+        cout << "You don't have the Armour yet, Invalid move." << endl;
         sleep(2);
-        break;
-      }     
+      }
+      break;
 
       case 'q':
       //goto QuitGame;
@@ -148,8 +163,7 @@ int main()
   int nOfEnemies, level;
   bool IsHavingSword, IsHavingShield, IsHavingArmour, IsHavingBow;
   Menu display;
-  PlayTurn play;
-  
+  PlayTurn play;  
   //Player *enemy[5];  
 
   //Starting Level 1
@@ -201,10 +215,21 @@ int main()
     hero->Reset();
     IsHavingShield = true;
   }
-  
-  
 
-  
+  //Starting Level 4
+  display.ShowLevel4();
+  nOfEnemies = 4;
+  result = RunMove(level, nOfEnemies, display, IsHavingSword, IsHavingShield, IsHavingArmour, IsHavingBow);
+  if(result == 'q')
+  goto QuitGame;
+  else if (result == 'l')
+  {
+    cout << "You have received the weapon Armour as a reward. This gives you a new ability to heal after your attack by sucking in bits of life from the enemy (10% chance)" << endl;
+    level++;
+    hero->Reset();
+    IsHavingArmour = true;
+  }
+
   QuitGame:
   cout << "You have quit, Thank you for playing" << endl; 
 

@@ -105,10 +105,13 @@ class Armour : public Items
   {
     itemHealth = 80;
     name = "Armour";
-    itemHeal = 10;
-    itemDamage = random(0, 5);
+    itemHeal = random(10,15);
+    itemDamage = random(5, 15);
   }
-  void ItemHit(){}
+  void ItemHit()
+  {
+    itemHitProbability = (random(1,10) == 1)? true: false;
+  }
   ~Armour(){}
 };
 

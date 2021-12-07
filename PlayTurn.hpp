@@ -11,13 +11,14 @@ class PlayTurn
   int edamage;
   Items *sword = new Sword();
   Items *shield = new Shield();
+  Items *armour = new Armour();
   public:  
   void HeroAttack(int defenceChecker, Player *player)
   {
     if(defenceChecker == 2)    
     {
       cout << hero->getName() << " is melee attacking " << player->getName() << endl;
-      cout << "But" << player->getName() << "is defending.." << endl;
+      cout << "But" << player->getName() << " is defending.." << endl;
       player->health = (player->health - hero->getMeleeDamage() + player->getShield());
     }
     else
@@ -40,19 +41,20 @@ class PlayTurn
     sleep(1);
     cout << "Healing +++++++ !! \U0001F64F ..Om! .\U0001F64F" << endl;
     sleep(1);
-    hero->health += random(0, 10);   
+    hero->health += random(2, 12);   
   }  
 
   void HeroSwordAttack(int defenceChecker, Player *player)
   {
     if(defenceChecker == 2)    
     {
-      cout << hero->getName() << " is critically attacking with sword \U0001F5E1 to " << player->getName() << endl;
-      cout << "But" << player->getName() << "is defending.." << endl;
+      
       sword->ItemHit();
       sword->displayStats();
       if (sword->getItemHitProbability())
       {
+        cout << hero->getName() << " is critically attacking with sword \U0001F5E1 to " << player->getName() << endl;
+        cout << "But" << player->getName() << " is defending.." << endl;
         player->health = (player->health - sword->getItemDamage()) + player->getShield();
       }
       else
@@ -64,11 +66,11 @@ class PlayTurn
     {
       sword->ItemHit();
       sword->displayStats();
-      cout << hero->getName() << " is critically attacking with sword \U0001F5E1 to" << player->getName() << endl;
-      cout << "But" << player->getName() << "is defending.." << endl;
+
       if (sword->getItemHitProbability())
       {
-        player->health = (player->health - sword->getItemDamage()) + player->getShield();
+        cout << hero->getName() << " is critically attacking with sword \U0001F5E1 to" << player->getName() << endl; 
+        player->health = player->health - sword->getItemDamage();
       }      
       else
       {
@@ -83,18 +85,35 @@ class PlayTurn
     shield->displayStats();
     if (shield->getItemHitProbability())
     {
+      cout << "Rama's Shield \U0001F6E1 has successfully blocked the enemy this turn" << endl;
       edamage = enemy->getMeleeDamage();
       enemy->setMeleeDamage(0);
     }
     else
     {
-    cout << "Hero's Shield \U0001F6E1 missed the enemy(10% chance only)" << endl; 
+      cout << "Rama's Shield \U0001F6E1 missed to block the enemy this turn (10% chance only)" << endl; 
     }
   } 
 
   void HeroShieldDown(Player *enemy)
   {
     enemy->setMeleeDamage(edamage);
+  }
+
+  void HeroUseArmour(Player *enemy)
+  {
+    armour->ItemHit();
+    armour->displayStats();
+    if (armour->getItemHitProbability())
+    {
+      cout << "Rama's armour \U0001F9E5 has successfully hit the enemy" << endl;
+      enemy->health = enemy->health - armour->getItemDamage();
+      hero->health = hero->health + armour->getHealingPower();
+    }
+    else
+    {
+      cout << "Hero's Armour \U0001F9E5 missed to hit the enemy this turn (10% chance only)" << endl; 
+    }
   }
   
   void EnemyAttack(Player *player)
@@ -138,7 +157,7 @@ class PlayTurn
       break;
 
       case 3:
-      EnemySpecialAttack(enemy);      
+      EnemySpecialAttack(enemy);            
       break;
     }
     return r;

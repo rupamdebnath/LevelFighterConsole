@@ -57,9 +57,9 @@ class Menu
     cout << "\na: Punch Left and right \U0001F91C \U0001F91B" << endl;
     cout << "\nd: Heal some health by folding your arms \U0001F64F in the range of 0 to 10 randomly.." << endl;
     cout << "\nw: Use your sword for heavy damage \U0001F5E1 this turn, you will need the Sword weapon from Level 2 to activate this. This gives you a critical hit probability of 10% to all enemies" << endl;
-    cout << "\ns: Use your shield ability \U0001F6E1 this turn with a 10% chance to block all attacks You will get this reward after level 3" << endl;
-    cout << "\nz: Use your armour ability \U0001F9E5 this turn with a 10% chance to heal back dsome health, You will get this reward after level 4" << endl;
-    cout << "\nx: Use your Bow and Arrow \U0001F3F9 ability this turn with a 10% chance for enemy to miss next turn, You will get this reward after level 5" << endl;
+    cout << "\ns: Use your shield ability \U0001F6E1 this turn with a 10% chance to block all enemy attacks. You will get this reward after completing level 3" << endl;
+    cout << "\nz: Use your armour ability \U0001F9E5 this turn with a 10% chance to heal back some health also attacking the enemy with some damage. You will get this reward after completing level 4" << endl;
+    cout << "\nx: Use your Bow and Arrow \U0001F3F9 ability this turn with a 10% chance for enemy to miss next turn but doing damage to the enemy as well. You will get this reward after completing level 5" << endl;
     cout << "\nq: Force Quit the Game!! \U0001F97A" << endl;
     cout << "Your turn: " << endl;
   }
@@ -95,6 +95,22 @@ class Menu
     sleep(2);
     cout << "Danava: \U0001F5e3 He who tried to cross this ocean shall die in vain..\nDhadhichi: Haha, we shall kill you and eat you.\n" << endl;
     cout << "Dusharu: AAAAAA..." << endl;
+    sleep(2);
+  }
+
+void ShowLevel4()
+  {
+    cout << "Starting Level 4: .......\nYou finally cross the ocean and reach the island of Lanka. Mitra: You made it.Now you have to beat the 4 guards guarding this island...\n \U0001f9db Asura \U0001f9db Vasura \U0001f9db Adhara \U0001f9db and Vadhara who guard this entrance appears in front of Rama now.\n---------------------------------\nMitra: These demons will do anything for Ravana.\nThey each have a health of 100 and melee damage of 20. They can randomly either defend or attack you each turn!!\nTheir special ability is simply to heal by some health value max of 5 !\nYou will receive the Armour for activating life-stealing ability if you can kill them!" << endl;
+    sleep(2);
+    cout << "ALl the Four Rakshasas: \U0001F5e3 Welcome Rama to your doom..\nAshara: Your journey ends here.\n" << endl;    
+    sleep(2);
+  }
+
+void ShowLevel5()
+  {
+    cout << "Starting Level 5: .......\nMitra: You are doing great Rama.\nYou have successfully passed the entrance of Lanka. \U0001f9db  \U0001f9db  \U0001f9db \U0001f9db As you walk through the Forest of Lanka, four more demons appear from nowhere\n---------------------------------\nMitra: These demons live in the Forest and are the second hurdle for Rama to cross.\nThey each have a health of 100 and melee damage of 20. They can randomly either defend or attack you each turn!!\nThey have no special ability !\nYou will receive the Bow and Arrow weapon for activating ranged attack ability if you can kill them!" << endl;
+    sleep(2);
+    cout << "Rakshasas: \U0001F5e3 Come Rama, your graveyard will be created here.\n" << endl;    
     sleep(2);
   }
 
