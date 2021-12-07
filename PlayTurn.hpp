@@ -12,6 +12,7 @@ class PlayTurn
   Items *sword = new Sword();
   Items *shield = new Shield();
   Items *armour = new Armour();
+  Items *bow = new Bow();
   public:  
   void HeroAttack(int defenceChecker, Player *player)
   {
@@ -56,10 +57,12 @@ class PlayTurn
         cout << hero->getName() << " is critically attacking with sword \U0001F5E1 to " << player->getName() << endl;
         cout << "But" << player->getName() << " is defending.." << endl;
         player->health = (player->health - sword->getItemDamage()) + player->getShield();
+        sleep(1);
       }
       else
       {
         cout << "Hero's sword attack \U0001F5E1 missed the enemy (10% chance only)" << endl;
+        sleep(1);
       }
     }
     else
@@ -71,10 +74,12 @@ class PlayTurn
       {
         cout << hero->getName() << " is critically attacking with sword \U0001F5E1 to" << player->getName() << endl; 
         player->health = player->health - sword->getItemDamage();
+        sleep(1);
       }      
       else
       {
         cout << "Hero's sword attack \U0001F5E1 missed the enemy(10% chance only)" << endl;
+        sleep(1);
       }
     }
   } 
@@ -85,19 +90,23 @@ class PlayTurn
     shield->displayStats();
     if (shield->getItemHitProbability())
     {
-      cout << "Rama's Shield \U0001F6E1 has successfully blocked the enemy this turn" << endl;
+      cout << "Rama's Shield \U0001F6E1 is up this turn" << endl;
       edamage = enemy->getMeleeDamage();
       enemy->setMeleeDamage(0);
+      sleep(1);
     }
     else
     {
       cout << "Rama's Shield \U0001F6E1 missed to block the enemy this turn (10% chance only)" << endl; 
+      sleep(1);
     }
   } 
 
   void HeroShieldDown(Player *enemy)
   {
     enemy->setMeleeDamage(edamage);
+    cout << "Rama's shield is down now" << endl;
+    sleep(1);
   }
 
   void HeroUseArmour(Player *enemy)
@@ -109,11 +118,43 @@ class PlayTurn
       cout << "Rama's armour \U0001F9E5 has successfully hit the enemy" << endl;
       enemy->health = enemy->health - armour->getItemDamage();
       hero->health = hero->health + armour->getHealingPower();
+      sleep(1);
     }
     else
     {
       cout << "Hero's Armour \U0001F9E5 missed to hit the enemy this turn (10% chance only)" << endl; 
+      sleep(1);
     }
+  }
+
+  void HeroBowShoot(Player *enemy)
+  {
+    shield->ItemHit();
+    shield->displayStats();
+    if (shield->getItemHitProbability())
+    {
+      cout << "Rama's shoots the Bow and arrow successfully \U0001F6E1 is up this turn" << endl;
+      edamage = enemy->getMeleeDamage();
+      enemy->setMeleeDamage(0);
+      sleep(1);
+      cout << "Enemy receives lot of damage from far" << endl;
+      enemy->health = enemy->health - shield->getItemDamage();
+      sleep(1);
+      cout << "Enemy misses this turn.." << endl;
+      sleep(2);
+    }
+    else
+    {
+      cout << "Rama's Bow and Arrow \U0001F3F9 missed to shoot the enemy this turn (10% chance only)" << endl; 
+      sleep(1);
+    }
+  } 
+
+  void HeroBowDown(Player *enemy)
+  {
+    enemy->setMeleeDamage(edamage);
+    cout << "Rama's Bow and Arrow is down now.." << endl;
+    sleep(1);
   }
   
   void EnemyAttack(Player *player)

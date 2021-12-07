@@ -124,6 +124,9 @@ class Bow : public Items
     name = "Bow";
     itemDamage = random(50, 80);
   }
-  void ItemHit(){}
+  void ItemHit()
+  {
+    itemHitProbability = (random(1,10) == 1)? true: false;
+  }
   ~Bow(){}
 };

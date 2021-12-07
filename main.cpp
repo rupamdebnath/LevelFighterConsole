@@ -92,6 +92,7 @@ char RunMove(int level, int nEnemies, Menu display, bool IsHavingSword, bool IsH
           if (enemyChoice != 1)
           {
             cout << "You used shield but Enemy didn't attack this turn, tough Luck!!" << endl;
+            sleep(1);
           }
           play.HeroShieldDown(enemy[i]);
           // if (enemy[i]->getHealth() < 1)
@@ -118,12 +119,29 @@ char RunMove(int level, int nEnemies, Menu display, bool IsHavingSword, bool IsH
         {
           play.HeroUseArmour(enemy[i]);
           enemyChoice = play.EnemyChoice(enemy[i], hero);
+          sleep(1);
         }
       }
       else 
       {
         cout << "You don't have the Armour yet, Invalid move." << endl;
         sleep(2);
+      }
+      break;
+    
+      case 'x':
+      if (IsHavingBow)
+      {
+        for(int i = 0; i < nEnemies; i++)
+        {
+          play.HeroBowShoot(enemy[i]);
+          play.HeroBowDown(enemy[i]);
+        }
+      }
+      else
+      {
+        cout << "You don't have the Bow and Arrow weapon yet, Invalid move." << endl;
+        sleep(2);        
       }
       break;
 
@@ -229,6 +247,33 @@ int main()
     hero->Reset();
     IsHavingArmour = true;
   }
+
+  //Starting Level 5
+  display.ShowLevel5();
+  nOfEnemies = 4;
+  result = RunMove(level, nOfEnemies, display, IsHavingSword, IsHavingShield, IsHavingArmour, IsHavingBow);
+  if(result == 'q')
+  goto QuitGame;
+  else if (result == 'l')
+  {
+    cout << "You have received the weapon Bow and Arrow as a reward. This gives you a new ability to do heavy damage to the enemy from far, while the enemy misses next turn (10% chance)" << endl;
+    level++;
+    hero->Reset();
+    IsHavingBow = true;
+  }
+
+  //Starting Level 5
+  display.ShowLevel6();
+  nOfEnemies = 1;
+  result = RunMove(level, nOfEnemies, display, IsHavingSword, IsHavingShield, IsHavingArmour, IsHavingBow);
+  if(result == 'q')
+  goto QuitGame;
+  else if (result == 'l')
+  {
+    cout << "You have successfully killed Ravana and rescued Sita. Congratulations and thank you for playing." << endl;
+    goto QuitGame;
+  } 
+  
 
   QuitGame:
   cout << "You have quit, Thank you for playing" << endl; 
