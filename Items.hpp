@@ -56,6 +56,7 @@ class Items
     cout << "Item Damage = " << itemDamage << endl;
     cout << "Item Health = " << itemHealth << endl;
     cout << "Item Healing ability = " << itemHeal << endl;
+    cout << "Probility of getting a critical hit this turn (10%):" << itemHitProbability << endl;
     cout << "====================================" << endl;
   }
 
@@ -86,11 +87,14 @@ class Shield : public Items
   public:
   Shield()
   {
-    itemHealth = 50;
+    itemHealth = 100;
     name = "Shield";
-    itemDamage = random(0, 10);
+    itemDamage = 0;
   }
-  void ItemHit();
+  void ItemHit()
+  {
+    itemHitProbability = (random(1,10) == 1)? true: false;
+  }
   ~Shield(){}
 };
 

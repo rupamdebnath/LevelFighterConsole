@@ -42,7 +42,10 @@ class Player
       this->health = this->health - damage;
       return this->health;
   }
-
+  void setMeleeDamage(int mdamage)
+  {
+      this->mDamage = mdamage;
+  }  
   int getRangedDamage()
   {
     return rDamage;

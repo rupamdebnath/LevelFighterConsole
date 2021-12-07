@@ -8,11 +8,13 @@
 class PlayTurn
 {
   int countOfTurn = 0;
+  int edamage;
   Items *sword = new Sword();
+  Items *shield = new Shield();
   public:  
-  void HeroAttack(bool defence, Player *player)
+  void HeroAttack(int defenceChecker, Player *player)
   {
-    if(defence == true)    
+    if(defenceChecker == 2)    
     {
       cout << hero->getName() << " is melee attacking " << player->getName() << endl;
       cout << "But" << player->getName() << "is defending.." << endl;
@@ -41,26 +43,28 @@ class PlayTurn
     hero->health += random(0, 10);   
   }  
 
-  void HeroSwordAttack(bool defence, Player *player)
+  void HeroSwordAttack(int defenceChecker, Player *player)
   {
-    if(defence == true)    
+    if(defenceChecker == 2)    
     {
-      cout << hero->getName() << " is critically attacking with sword to" << player->getName() << endl;
+      cout << hero->getName() << " is critically attacking with sword \U0001F5E1 to " << player->getName() << endl;
       cout << "But" << player->getName() << "is defending.." << endl;
       sword->ItemHit();
+      sword->displayStats();
       if (sword->getItemHitProbability())
       {
         player->health = (player->health - sword->getItemDamage()) + player->getShield();
       }
       else
       {
-        cout << "Hero's sword attack missed the enemy (10% chance only)" << endl;
+        cout << "Hero's sword attack \U0001F5E1 missed the enemy (10% chance only)" << endl;
       }
     }
     else
     {
       sword->ItemHit();
-      cout << hero->getName() << " is critically attacking with sword to" << player->getName() << endl;
+      sword->displayStats();
+      cout << hero->getName() << " is critically attacking with sword \U0001F5E1 to" << player->getName() << endl;
       cout << "But" << player->getName() << "is defending.." << endl;
       if (sword->getItemHitProbability())
       {
@@ -68,11 +72,31 @@ class PlayTurn
       }      
       else
       {
-        cout << "Hero's sword attack missed the enemy(10% chance only)" << endl;
+        cout << "Hero's sword attack \U0001F5E1 missed the enemy(10% chance only)" << endl;
       }
     }
-  }  
+  } 
+  
+  void HeroShieldUp(Player *enemy)
+  {
+    shield->ItemHit();
+    shield->displayStats();
+    if (shield->getItemHitProbability())
+    {
+      edamage = enemy->getMeleeDamage();
+      enemy->setMeleeDamage(0);
+    }
+    else
+    {
+    cout << "Hero's Shield \U0001F6E1 missed the enemy(10% chance only)" << endl; 
+    }
+  } 
 
+  void HeroShieldDown(Player *enemy)
+  {
+    enemy->setMeleeDamage(edamage);
+  }
+  
   void EnemyAttack(Player *player)
   {    
     cout << player->getName() << " is melee attacking " << hero->getName() << endl;
@@ -100,7 +124,7 @@ class PlayTurn
     pplayer->SpecialAbility(hero);
   }
 
-  bool EnemyChoice(Player *enemy, Player *player)
+  int EnemyChoice(Player *enemy, Player *player)
   {    
     int r = random(1,3);
     switch(r)
@@ -117,10 +141,7 @@ class PlayTurn
       EnemySpecialAttack(enemy);      
       break;
     }
-    if (r==2)
-    return true;
-    else
-    return 0;
+    return r;
   }
   
 };

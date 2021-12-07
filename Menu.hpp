@@ -57,7 +57,9 @@ class Menu
     cout << "\na: Punch Left and right \U0001F91C \U0001F91B" << endl;
     cout << "\nd: Heal some health by folding your arms \U0001F64F in the range of 0 to 10 randomly.." << endl;
     cout << "\nw: Use your sword for heavy damage \U0001F5E1 this turn, you will need the Sword weapon from Level 2 to activate this. This gives you a critical hit probability of 10% to all enemies" << endl;
-    cout << "\ns: Use your special ability this turn \U0001F3F9" << endl;
+    cout << "\ns: Use your shield ability \U0001F6E1 this turn with a 10% chance to block all attacks You will get this reward after level 3" << endl;
+    cout << "\nz: Use your armour ability \U0001F9E5 this turn with a 10% chance to heal back dsome health, You will get this reward after level 4" << endl;
+    cout << "\nx: Use your Bow and Arrow \U0001F3F9 ability this turn with a 10% chance for enemy to miss next turn, You will get this reward after level 5" << endl;
     cout << "\nq: Force Quit the Game!! \U0001F97A" << endl;
     cout << "Your turn: " << endl;
   }
@@ -89,9 +91,10 @@ class Menu
 
   void ShowLevel3()
   {
-    cout << "Starting Level 3: .......\nMitra: Glad that both the stupid demons are dead. Thank you. In return, I will give you this boat to help you cross the ocean. Also your health, healing value and damage has increased. Consider this a blessing from the Forest animals.\nYou start the journey through the ocean. And just when you are in the middle of it,  3 water demons appear \U0001f9db Marichi \U0001f9db Danava and \U0001f9db Dhadhichi who live in these waters.\n---------------------------------\nMitra: These demons kill any humans who try to cross this ocean and eat them for lunch.\nThey each have a health of 100 and melee damage of 20. They can randomly either defend or attack you each turn!!\nThey have no special ability !\nYou will receive the Shield for heavy damage if you can kill them!" << endl;
+    cout << "Starting Level 3: .......\nMitra: Glad that both the stupid demons are dead. Thank you. In return, I will give you this boat to help you cross the ocean. Also your health, healing value and damage has increased. Consider this a blessing from the Forest animals.\nYou start the journey through the ocean. And just when you are in the middle of it,  3 water demons appear \U0001f9db Marichi \U0001f9db Danava \U0001f9db Dhadhichi and Dusharu who live in these waters.\n---------------------------------\nMitra: These demons kill any humans who try to cross this ocean and eat them for lunch.\nThey each have a health of 100 and melee damage of 20. They can randomly either defend or attack you each turn!!\nThey have no special ability !\nYou will receive the Shield for activating blocking ability if you can kill them!" << endl;
     sleep(2);
     cout << "Danava: \U0001F5e3 He who tried to cross this ocean shall die in vain..\nDhadhichi: Haha, we shall kill you and eat you.\n" << endl;
+    cout << "Dusharu: AAAAAA..." << endl;
     sleep(2);
   }
 
