@@ -26,7 +26,15 @@ char RunMove(int level, int nEnemies, Menu display, bool IsHavingSword, bool IsH
   do
   {
     for(int i = 0; i < nEnemies; i++)
-    enemy[i]->PlayerStat();  
+    enemy[i]->PlayerStat(); 
+    if (RavanaSp == 2)
+    { 
+      cout << "you will misss this turn as Ravana has used Speed Dash ability. Ravana's turn:" << endl;
+      sleep(2);
+      enemyChoice = play.EnemyChoice(enemy[0], hero);
+      sleep(1);      
+      RavanaSp = 0;
+    } 
     display.ShowHeroTurn();  
     cin>>userInput;
     switch(userInput)

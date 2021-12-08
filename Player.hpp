@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 using namespace std;
-
+int RavanaSp = 0;
 //The Base class Player from which all the other characters will be inherited
 class Player
 {
@@ -181,7 +181,7 @@ class Ravana : public Player
   public:
   Ravana()
   {
-    health = 400;
+    health = 300;
     name = "Ravana";
     mDamage = 30;
     rDamage = 15;
@@ -190,7 +190,7 @@ class Ravana : public Player
   }
   void Reset()
   {
-    health = 400;
+    health = 300;
     shield = random(20, 30);
   }
   void SpecialAbility()
@@ -208,22 +208,19 @@ class Ravana : public Player
   }
   void SpecialAbility(Player *player)
   {
-    if (player->getMeleeDamage() == 0)
-    player->setMeleeDamage(getDamageValueHero);
-    int RavanaSp = random(1,3);
+
+    RavanaSp = random(1,2);
 
     switch (RavanaSp)
     {
       case 1:
-      cout << "Ravana uses Skull Slash" << endl;
+      cout << "Ravana uses Skull Slash, doing a lot of damage..." << endl;
       player->TakeDamage(random(50,70));
       sleep(2);
       break;
 
       case 2:
-      cout << "Ravana uses Speed Dash, you can't do any melee damage until Ravana's next Special Ability" << endl;
-      getDamageValueHero = player->getMeleeDamage();
-      player->setMeleeDamage(0);
+      cout << "Ravana uses Speed Dash, you will miss the next turn.., Ravana gets 2 turns consecutively..." << endl;
       sleep(2);
       break;
     }
