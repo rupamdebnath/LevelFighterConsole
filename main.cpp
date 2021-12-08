@@ -136,8 +136,16 @@ char RunMove(int level, int nEnemies, Menu display, bool IsHavingSword, bool IsH
       {
         for(int i = 0; i < nEnemies; i++)
         {
-          play.HeroBowShoot(enemy[i]);
-          play.HeroBowDown(enemy[i]);
+          if (play.HeroBowShoot(enemy[i]) == false)
+          {
+            enemyChoice = play.EnemyChoice(enemy[i], hero);
+            play.HeroBowDown(enemy[i]);
+          }
+          else
+          {
+            play.HeroBowShoot(enemy[i]);
+            play.HeroBowDown(enemy[i]);
+          }
         }
       }
       else
@@ -268,6 +276,7 @@ int main()
 
   //Starting Level 5
   display.ShowLevel6();
+  hero->LevelUp(250, 50, 60, 40);
   nOfEnemies = 1;
   result = RunMove(level, nOfEnemies, display, IsHavingSword, IsHavingShield, IsHavingArmour, IsHavingBow);
   if(result == 'q')
@@ -276,8 +285,7 @@ int main()
   {
     cout << "You have successfully killed Ravana and rescued Sita. Congratulations and thank you for playing." << endl;
     goto QuitGame;
-  } 
-  
+  }   
 
   QuitGame:
   cout << "You have quit, Thank you for playing" << endl; 

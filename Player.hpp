@@ -190,7 +190,7 @@ class Ravana : public Player
   }
   void Reset()
   {
-    health = 500;
+    health = 400;
     shield = random(20, 30);
   }
   void SpecialAbility()

@@ -131,7 +131,7 @@ class PlayTurn
     }
   }
 
-  void HeroBowShoot(Player *enemy)
+  bool HeroBowShoot(Player *enemy)
   {
     shield->ItemHit();
     shield->displayStats();
@@ -146,11 +146,13 @@ class PlayTurn
       sleep(1);
       cout << "Enemy misses this turn.." << endl;
       sleep(2);
+      return true;
     }
     else
     {
       cout << "Rama's Bow and Arrow \U0001F3F9 missed to shoot the enemy this turn (10% chance only)" << endl; 
       sleep(1);
+      return false;
     }
   } 
 
