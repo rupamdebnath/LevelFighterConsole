@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include <iostream>
 #include <unistd.h>
 //#include "/home/runner/TheAncientLord/include/Player.hpp"
@@ -6,6 +7,8 @@
 //using namespace std;
 
 Player *hero = new Hero("Rama", 150, 30); 
+// creating unique pointer instead to avoid memory leak
+// unique_ptr<Player> hero{new Hero("Rama", 150, 30)};
 
 //Menu class for displaying statistics and storyline
 class Menu
@@ -91,7 +94,7 @@ class Menu
 
   void ShowLevel3()
   {
-    cout << "Starting Level 3: .......\nMitra: Glad that both the stupid demons are dead. Thank you. In return, I will give you this boat to help you cross the ocean. Also your health, healing value and damage has increased. Consider this a blessing from the Forest animals.\nYou start the journey through the ocean. And just when you are in the middle of it,  3 water demons appear \U0001f9db Marichi \U0001f9db Danava \U0001f9db Dhadhichi and Dusharu who live in these waters.\n---------------------------------\nMitra: These demons kill any humans who try to cross this ocean and eat them for lunch.\nThey each have a health of 100 and melee damage of 20. They can randomly either defend or attack you each turn!!\nThey have no special ability !\nYou will receive the Shield for activating blocking ability if you can kill them!" << endl;
+    cout << "Starting Level 3: .......\nMitra: Glad that both the stupid demons are dead. Thank you. In return, I will give you this boat to help you cross the ocean. Also your health, healing value and damage has increased. Consider this a blessing from the Forest animals.\nYou start the journey through the ocean. And just when you are in the middle of it,  3 water demons appear \U0001f9db Marichi \U0001f9db Danava \U0001f9db Dhadhichi and Dusharu who live in these waters.\n---------------------------------\nMitra: These demons kill any humans who try to cross this ocean and eat them for lunch.\nThey each have a health of 80 and melee damage of 20. They can randomly either defend or attack you each turn!!\nThey have no special ability !\nYou will receive the Shield for activating blocking ability if you can kill them!" << endl;
     sleep(2);
     cout << "Danava: \U0001F5e3 He who tried to cross this ocean shall die in vain..\nDhadhichi: Haha, we shall kill you and eat you.\n" << endl;
     cout << "Dusharu: AAAAAA..." << endl;
@@ -100,7 +103,7 @@ class Menu
 
 void ShowLevel4()
   {
-    cout << "Starting Level 4: .......\nYou finally cross the ocean and reach the island of Lanka. Mitra: You made it.Now you have to beat the 4 guards guarding this island...\n \U0001f9db Asura \U0001f9db Vasura \U0001f9db Adhara \U0001f9db and Vadhara who guard this entrance appears in front of Rama now.\n---------------------------------\nMitra: These demons will do anything for Ravana.\nThey each have a health of 100 and melee damage of 20. They can randomly either defend or attack you each turn!!\nTheir special ability is simply to heal by some health value max of 5 !\nYou will receive the Armour for activating life-stealing ability if you can kill them!" << endl;
+    cout << "Starting Level 4: .......\nYou finally cross the ocean and reach the island of Lanka. Mitra: You made it.Now you have to beat the 4 guards guarding this island...\n \U0001f9db Asura \U0001f9db Vasura \U0001f9db Adhara \U0001f9db and Vadhara who guard this entrance appears in front of Rama now.\n---------------------------------\nMitra: These demons will do anything for Ravana.\nThey each have a health of 80 and melee damage of 20. They can randomly either defend or attack you each turn!!\nTheir special ability is simply to heal by some health value max of 5 !\nYou will receive the Armour for activating life-stealing ability if you can kill them!" << endl;
     sleep(2);
     cout << "ALl the Four Rakshasas: \U0001F5e3 Welcome Rama to your doom..\nAshara: Your journey ends here.\n" << endl;    
     sleep(2);
@@ -108,7 +111,7 @@ void ShowLevel4()
 
 void ShowLevel5()
   {
-    cout << "Starting Level 5: .......\nMitra: You are doing great Rama.\nYou have successfully passed the entrance of Lanka. \U0001f9db  \U0001f9db  \U0001f9db \U0001f9db As you walk through the Forest of Lanka, four more demons appear from nowhere\n---------------------------------\nMitra: These demons live in the Forest and are the second hurdle for Rama to cross.\nThey each have a health of 100 and melee damage of 20. They can randomly either defend or attack you each turn!!\nThey have no special ability !\nYou will receive the Bow and Arrow weapon for activating ranged attack ability if you can kill them!" << endl;
+    cout << "Starting Level 5: .......\nMitra: You are doing great Rama.\nYou have successfully passed the entrance of Lanka. \U0001f9db  \U0001f9db  \U0001f9db \U0001f9db As you walk through the Forest of Lanka, four more demons appear from nowhere\n---------------------------------\nMitra: These demons live in the Forest and are the second hurdle for Rama to cross.\nThey each have a health of 80 and melee damage of 20. They can randomly either defend or attack you each turn!!\nThey have no special ability !\nYou will receive the Bow and Arrow weapon for activating ranged attack ability if you can kill them!" << endl;
     sleep(2);
     cout << "Rakshasas: \U0001F5e3 Come Rama, your graveyard will be created here.\n" << endl;    
     sleep(2);
@@ -116,7 +119,7 @@ void ShowLevel5()
 
 void ShowLevel6()
   {
-    cout << "Starting Level 6: .......\nMitra: You have made it Rama, great going. Finally you will get to meet Ravana, they call him the demon wiht 10 heads \U0001f9db  \U0001f9db  \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \n---------------------------------\nMitra: Ravana has some special abilities like Skull Smash (heavy damage) and Head Block (blocks attacks upto 80) !!\nIt will not be easy to beat him\nGood luck my friend!" << endl;
+    cout << "Starting Level 6: .......\nMitra: You have made it Rama, great going. Finally you will get to meet Ravana, they call him the demon wiht 10 heads \U0001f9db  \U0001f9db  \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \n---------------------------------\nMitra: Ravana has some special abilities like Skull Smash (heavy damage) and Head Block (blocks attacks upto 80) !!\nIt will not be easy to beat him\nGood luck my friend!, \nOh and he has a health of 400!!" << endl;
     sleep(2);
     cout << "Ravana: Hahahahahahahahahahahaha \U0001f9db  \U0001f9db  \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db \U0001f9db Glad that you made this far Rama, as now I get to kill you with my own hand.\n" << endl;    
     sleep(2);

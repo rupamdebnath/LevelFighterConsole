@@ -18,7 +18,7 @@ char RunMove(int level, int nEnemies, Menu display, bool IsHavingSword, bool IsH
     for(int i = 0; i < nEnemies; i++)
     {
       string nameEnemy = "Rakshasa"+to_string(i+1);
-      enemy[i] = new Rakshasa(nameEnemy, 30,40,30);
+      enemy[i] = new Rakshasa(nameEnemy,25,80,20);
     }
   }
   RestartLevel: 
@@ -174,6 +174,7 @@ char RunMove(int level, int nEnemies, Menu display, bool IsHavingSword, bool IsH
   }
   else
   LevelCleared:
+  //delete [] *enemy;
   cout <<"Awesome, all enemies are dead, Level is cleared" << endl;
   return 'l';
 }
@@ -280,5 +281,6 @@ int main()
 
   QuitGame:
   cout << "You have quit, Thank you for playing" << endl; 
+  delete hero;
 
 } 

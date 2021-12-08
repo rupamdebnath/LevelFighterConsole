@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "Items.hpp"
 #include "Menu.hpp"
 #include <iostream>
@@ -9,10 +10,13 @@ class PlayTurn
 {
   int countOfTurn = 0;
   int edamage;
-  Items *sword = new Sword();
-  Items *shield = new Shield();
-  Items *armour = new Armour();
-  Items *bow = new Bow();
+
+  //creating unique pointers for Items
+  unique_ptr<Items> sword{new Sword()};
+  unique_ptr<Items> shield{ new Shield()};
+  unique_ptr<Items> armour{ new Armour()};
+  unique_ptr<Items> bow{ new Bow()};
+
   public:  
   void HeroAttack(int defenceChecker, Player *player)
   {

@@ -89,7 +89,7 @@ class Hero : public Player
   }
   ~Hero()
   {
-    cout << "Sorry, you are dead, you can reset the game and try again" << endl;
+
   }
   void Reset()
   {
@@ -124,7 +124,7 @@ class Rakshasa : public Player
   
   ~Rakshasa()
   {
-    cout << name << " is dead." << endl;
+    // cout << name << " is dead." << endl;
   }
   void Reset()
   {
@@ -181,9 +181,9 @@ class Ravana : public Player
   public:
   Ravana()
   {
-    health = 100;
+    health = 400;
     name = "Ravana";
-    mDamage = 35;
+    mDamage = 30;
     rDamage = 15;
     shield = random(20, 30);
     this->name = name;
@@ -232,8 +232,7 @@ class Ravana : public Player
   void LevelUp(int health, int mDamage, int rDamage, int shield){}
   ~Ravana()
   {
-    // cout << "Congratulations, You have successfully killed Tataka!!" << endl;
-    // cout << "You have received the Map of Lanka." << endl;
+
   }  
 
 };
